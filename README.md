@@ -148,3 +148,8 @@ Each OG NFT stands as a **badge of honor** — proof that you believed in privac
 
 🔗 Check the claim page (not live yet): [zama.ai/nft/og](https://www.zama.ai/nft/og)
 
+git add .
+git commit -m "Ajout du suivi Talent Protocol"
+git push origin feature/talent-protocol
+
+
