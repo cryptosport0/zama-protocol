@@ -1,0 +1,35 @@
+[package]
+name = "zama-fhe-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tfhe = { version = "~1.4.2", features = ["integer"] }
+use tfhe::{ConfigBuilder, generate_keys, set_server_key, FheUint8};
+use tfhe::prelude::*;
+
+fn main() {
+    let config = ConfigBuilder::default().build();
+
+    // Côté client : génération des clés
+    let (client_key, server_key) = generate_keys(config);
+
+    let clear_a = 27u8;
+    let clear_b = 128u8;
+
+    // Chiffrement
+    let a = FheUint8::encrypt(clear_a, &client_key);
+    let b = FheUint8::encrypt(clear_b, &client_key);
+
+    // Côté serveur : configuration de la clé serveur et calcul homomorphe
+    set_server_key(server_key);
+    let result = a + b;  // Addition chiffrée (sans déchiffrer !)
+
+    // Côté client : déchiffrement
+    let decrypted_result: u8 = result.decrypt(&client_key);
+
+    let clear_result = clear_a + clear_b;
+
+    assert_eq!(decrypted_result, clear_result);
+    println!("Résultat clair : {}, Résultat déchiffré : {}", clear_result, decrypted_result);
+}
