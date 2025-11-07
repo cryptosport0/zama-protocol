@@ -104,6 +104,10 @@ Every thread, video, or article explaining Zama and Fully Homomorphic Encryption
 
 🎥 Video content library → zama.ai/resources
 
+November 2025, Season 4 is live !
+
+1750 OG nft are available ans maybe the last ones. Don't miss it
+
 
 Zama keeps pushing the boundaries of confidential blockchain.
 
